@@ -1,5 +1,5 @@
 <template>
-  <div class="PlanetsList">
+  <div class="planets-list">
      <Planet :key="planet.url" v-for="planet in planets" :planet="planet"/>
   </div>
 </template>
