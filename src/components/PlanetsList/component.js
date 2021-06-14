@@ -1,11 +1,13 @@
 // @vue/component
 import { mapActions } from 'vuex'
 import Planet from '../Planet'
+import Spinner from '../Spinner'
 
 export default {
   name: 'PlanetsList',
   components: {
-    Planet
+    Planet,
+    Spinner
   },
   data () {
     return {}
@@ -16,6 +18,9 @@ export default {
   computed: {
     planets () {
       return this.$store.state.planets.list
+    },
+    loading () {
+      return this.$store.state.planets.loading
     }
   },
   created () {
