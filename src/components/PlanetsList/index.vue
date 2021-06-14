@@ -1,8 +1,13 @@
 <template>
   <div>
-    <Spinner v-if="loading" />
+    <Spinner v-if="loading" class="list-spinner" />
     <div class="planets-list">
-      <Planet :key="planet.url" v-for="planet in planets" :planet="planet" />
+      <Planet
+        :key="planet.url"
+        v-for="planet in planets"
+        :planet="planet"
+        :getId="getId"
+      />
     </div>
   </div>
 </template>

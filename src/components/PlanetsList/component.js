@@ -13,7 +13,10 @@ export default {
     return {}
   },
   methods: {
-    ...mapActions(['getPlanets'])
+    ...mapActions(['getPlanets']),
+    getId (url) {
+      return url.split('/')[5]
+    }
   },
   computed: {
     planets () {

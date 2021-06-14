@@ -1,6 +1,7 @@
 export default {
   name: 'Planet',
   props: {
-    planet: Object
+    planet: Object,
+    getId: Function
   }
 }
