@@ -1,6 +1,6 @@
 const path = require('path')
 
-const resolve = dir => path.join(__dirname, dir)
+const resolve = (dir) => path.join(__dirname, dir)
 
 module.exports = {
   configureWebpack: {
@@ -15,6 +15,15 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: '@import "@/assets/styles/__variables.sass";'
+      }
+    }
+  },
+  devServer: {
+    proxy: {
+      '^/api': {
+        target: 'https://swapi.dev',
+        ws: true,
+        changeOrigin: true
       }
     }
   }
