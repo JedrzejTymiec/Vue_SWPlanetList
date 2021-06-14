@@ -1,12 +1,11 @@
 <template>
-  <router-link :to="'/planet/' + getId(planet.url)" class="planet">
-    <h1>{{ planet.name }}</h1>
-    <p>rotation period: {{ planet.rotation_period }}</p>
-    <p>climate: {{ planet.climate }}</p>
-    <p>gravity: {{ planet.gravity }}</p>
-    <p>created: {{ planet.created }}</p>
-    <p>url: {{ planet.url }}</p>
-  </router-link>
+    <tr class="planet" @click="this.onClick">
+      <td>{{ planet.name }}</td>
+      <td>{{ planet.rotation_period }}</td>
+      <td>{{ planet.climate }}</td>
+      <td>{{ planet.gravity }}</td>
+      <td>{{ planet.created }}</td>
+    </tr>
 </template>
 <script src="./component.js"></script>
 <style src="./style.sass" lang="sass" scoped></style>

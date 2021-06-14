@@ -29,5 +29,4 @@ body
   background-image: url('./assets/star-wars-backgrounds-25.jpg')
   background-size: 100vw
   background-attachment: fixed
-
 </style>
