@@ -4,7 +4,7 @@
       <td>{{ planet.rotation_period }}</td>
       <td>{{ planet.climate }}</td>
       <td>{{ planet.gravity }}</td>
-      <td>{{ planet.created }}</td>
+      <td>{{ this.formatDate(planet.created) }}</td>
     </tr>
 </template>
 <script src="./component.js"></script>
