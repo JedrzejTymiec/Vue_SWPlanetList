@@ -40,15 +40,21 @@ export default {
       await this.getPlanets(page)
       window.scrollTo(0, 0)
     },
+    filterBy (arr, prop) {
+      return arr.filter(item => {
+        return item[prop].toUpperCase()
+          .includes(this.searchValue.toUpperCase())
+      })
+    },
     search () {
       if (this.searchValue !== '' && this.searchValue) {
-        let tempPlanets = this.$store.state.planets.list
-        console.log(tempPlanets)
-        tempPlanets = tempPlanets.filter(planet => {
-          return planet.name.toUpperCase()
-            .includes(this.searchValue.toUpperCase())
-        })
-        console.log(tempPlanets)
+        const planets = this.$store.state.planets.list
+        const nameFilter = this.filterBy(planets, 'name')
+        const climateFilter = this.filterBy(planets, 'climate')
+        const gravityFilter = this.filterBy(planets, 'gravity')
+        const rotationPeriodFilter = this.filterBy(planets, 'rotation_period')
+        const allFilters = [...nameFilter, ...climateFilter, ...gravityFilter, ...rotationPeriodFilter]
+        const tempPlanets = [...new Set(allFilters)]
         this.$store.commit('setDisplayList', tempPlanets)
       } else {
         this.$store.commit('setDisplayList', this.$store.state.planets.list)
