@@ -13,6 +13,11 @@ const routes = [
     path: '/planet/:id',
     name: 'SinglePlanet',
     component: () => import('../views/Planet.vue')
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue')
   }
 ]
 
