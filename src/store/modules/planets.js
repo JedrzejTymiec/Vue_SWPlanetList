@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const state = {
   list: [],
+  displayList: [],
   planet: {},
   loading: true
 }
@@ -25,7 +26,12 @@ const actions = {
 const mutations = {
   setPlanets: (state, planets) => {
     state.list = planets
+    state.displayList = planets
     state.loading = false
+  },
+
+  setDisplayList: (state, planets) => {
+    state.displayList = planets
   },
 
   setPlanet: (state, planet) => {
@@ -39,7 +45,8 @@ const mutations = {
   },
 
   clearPlanets: (state) => {
-    state.planets = []
+    state.list = []
+    state.displayList = []
     state.loading = true
   }
 }

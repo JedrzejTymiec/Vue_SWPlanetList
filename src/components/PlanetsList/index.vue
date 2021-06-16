@@ -1,6 +1,10 @@
 <template>
   <div class="list-container">
     <div class="table-container">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text" v-model="searchValue" @input="search">
+      </div>
       <table class="planets-list">
         <thead>
           <tr class="table-head">

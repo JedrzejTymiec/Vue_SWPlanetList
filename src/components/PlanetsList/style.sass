@@ -1,18 +1,37 @@
 .list-container 
-  padding-top: 7rem
+  padding-top: 9rem
   padding-bottom: 2rem
   display: flex
   justify-content: center
   align-items: center
 
-.list-spinner
-  height: 70%
-  position: absolute
-  left: 50%
-  transform: translateX(-50%)
+  .table-container
+    position: relative
+
+    .search
+      background-color: transparent
+      position: absolute
+      top: -2.3rem
+      left: 0
+      width: 25%  
+      border-bottom: 1px solid #fff
+      color: #fff
+      display: flex
+
+      i
+        font-size: 1.5rem
+
+      input
+        width: 100%
+        height: 1.5rem
+        background-color: transparent
+        border: none
+        font-size: 1.5rem
+        color: #fff     
+        outline: none
+
 
 .planets-list
-  height: 100vh
   width: 80vw
   border-collapse: collapse
   color: #fff
@@ -30,6 +49,9 @@
     i
       cursor: pointer
 
-  tbody
-    height: 600px
+  .list-spinner
+    height: 70%
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
     
