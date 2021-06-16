@@ -7,8 +7,8 @@ const state = {
 }
 
 const actions = {
-  async getPlanets ({ commit }) {
-    const res = await axios.get('/api/planets')
+  async getPlanets ({ commit }, page) {
+    const res = await axios.get('api/planets/', { params: { page: page } })
     commit('setPlanets', res.data.results)
   },
   // ADD TRY CATCH WITH ERROR HANDLE
@@ -35,6 +35,11 @@ const mutations = {
 
   clearPlanet: (state) => {
     state.planet = {}
+    state.loading = true
+  },
+
+  clearPlanets: (state) => {
+    state.planets = []
     state.loading = true
   }
 }

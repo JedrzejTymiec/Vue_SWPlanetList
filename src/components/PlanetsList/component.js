@@ -2,16 +2,19 @@
 import { mapActions, mapMutations } from 'vuex'
 import Planet from '../Planet'
 import Spinner from '../Spinner'
+import Pagination from '../Pagination'
 
 export default {
   name: 'PlanetsList',
   components: {
     Planet,
-    Spinner
+    Spinner,
+    Pagination
   },
   data () {
     return {
-      order: 1
+      order: 1,
+      currentPage: 1
     }
   },
   methods: {
@@ -29,6 +32,12 @@ export default {
             ? 0 : (-1 * order)))
       this.order = this.order === 1 ? -1 : 1
       this.$store.commit('setPlanets', planets)
+    },
+    async setCurrentPage (page) {
+      this.currentPage = page
+      this.$store.commit('clearPlanets')
+      await this.getPlanets(page)
+      window.scrollTo(0, 0)
     }
   },
   computed: {
@@ -40,6 +49,6 @@ export default {
     }
   },
   async created () {
-    await this.getPlanets()
+    await this.getPlanets(this.currentPage)
   }
 }
