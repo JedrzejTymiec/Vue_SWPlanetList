@@ -1,6 +1,6 @@
 <template>
   <ul class="pagination">
-      <li @click="clickHandle($event)" class="page-nr">1</li>
+      <li @click="clickHandle($event)" class="page-nr current">1</li>
       <li @click="clickHandle($event)" class="page-nr">2</li>
       <li @click="clickHandle($event)" class="page-nr">3</li>
       <li @click="clickHandle($event)" class="page-nr">4</li>
