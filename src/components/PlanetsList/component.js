@@ -76,5 +76,6 @@ export default {
   },
   async created () {
     await this.getPlanets(this.currentPage)
+    console.log(document.querySelectorAll('tbody tr td:last-child'))
   }
 }
