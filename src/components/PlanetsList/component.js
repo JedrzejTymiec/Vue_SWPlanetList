@@ -1,8 +1,7 @@
-// @vue/component
-import { mapActions, mapMutations } from 'vuex'
 import Planet from '../Planet'
 import Spinner from '../Spinner'
 import Pagination from '../Pagination'
+import axios from 'axios'
 
 export default {
   name: 'PlanetsList',
@@ -19,8 +18,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getPlanets']),
-    ...mapMutations(['setPlanets']),
+    async getPlanets (page) {
+      try {
+        const res = await axios.get('api/planets/', { params: { page: page } })
+        this.$store.commit('setPlanets', res.data.results)
+      } catch (err) {
+        console.error(err)
+      }
+    },
     getId (url) {
       return url.split('/')[5]
     },

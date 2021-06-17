@@ -1,26 +1,8 @@
-import axios from 'axios'
-
 const state = {
   list: [],
   displayList: [],
   planet: {},
   loading: true
-}
-
-const actions = {
-  async getPlanets ({ commit }, page) {
-    const res = await axios.get('api/planets/', { params: { page: page } })
-    commit('setPlanets', res.data.results)
-  },
-  // ADD TRY CATCH WITH ERROR HANDLE
-  async getPlanet ({ commit }, planet) {
-    const res = await axios.get(`/api/planets/${planet}`)
-    commit('setPlanet', res.data)
-  },
-
-  clearPlanet ({ commit }) {
-    commit('clearPlanet')
-  }
 }
 
 const mutations = {
@@ -53,6 +35,5 @@ const mutations = {
 
 export default {
   state,
-  actions,
   mutations
 }

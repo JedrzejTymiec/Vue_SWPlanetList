@@ -1,4 +1,3 @@
-import { mapActions } from 'vuex'
 import Spinner from '../Spinner'
 import axios from 'axios'
 
@@ -30,12 +29,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getPlanet', 'clearPlanet']),
+    async getPlanet (planet) {
+      try {
+        const res = await axios.get(`/api/planets/${planet}`)
+        this.$store.commit('setPlanet', res.data)
+      } catch (err) {
+        console.error(err)
+      }
+    },
     async getCitizens () {
       if (this.citizensUrls.length > 0) {
         for (let i = 0; this.citizensUrls.length > i; i++) {
-          const res = await axios.get(this.citizensUrls[i])
-          this.citizens.push(res.data.name)
+          try {
+            const res = await axios.get(this.citizensUrls[i])
+            this.citizens.push(res.data.name)
+          } catch (err) {
+            console.error(err)
+          }
         }
       } else {
         this.citizens.push('No known citizens')
@@ -45,8 +55,12 @@ export default {
     async getFilms () {
       if (this.filmsUrls.length > 0) {
         for (let i = 0; this.filmsUrls.length > i; i++) {
-          const res = await axios.get(this.filmsUrls[i])
-          this.films.push(res.data.title)
+          try {
+            const res = await axios.get(this.filmsUrls[i])
+            this.films.push(res.data.title)
+          } catch (err) {
+            console.error(err)
+          }
         }
       } else {
         this.films.push('Not mentioned in any movie')
@@ -55,7 +69,7 @@ export default {
     }
   },
   async created () {
-    this.clearPlanet()
+    this.$store.commit('clearPlanet')
     await this.getPlanet(this.id)
     this.getCitizens()
     this.getFilms()
